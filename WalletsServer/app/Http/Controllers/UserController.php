@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -19,31 +19,45 @@ class UserController extends Controller
 
     public function register(Request $request){
         $user = $this->user->create([
+          'name' => $request->get('name'),
           'email' => $request->get('email'),
           'password' => Hash::make($request->get('password'))
         ]);
 
-        return response()->json([
-            'status'=> 200,
+        $data = [
+            'code'=> 200,
             'message'=> 'User created successfully',
             'data'=>$user
-        ]);
+        ];
+        return response()->json($data);
     }
 
     public function login(Request $request){
         $credentials = $request->only('email', 'password');
-        $token = null;
+        $token = auth()->attempt($credentials);;
         try {
-           if (!$token = JWTAuth::attempt($credentials)) {
+           if (!$token) {
             return response()->json(['invalid_email_or_password'], 422);
            }
         } catch (\Exception $e) {
             return response()->json(['failed_to_create_token'], 500);
         }
-        return response()->json(compact('token'));
+        // return response()->json(compact('token'));
+        $data = [
+            'code' => 200,
+            'message' => "OK",
+            'data' => [
+                'user' => auth()->user(),
+                'token' => $token,
+                'expires_in' => auth()->factory()->getTTL() * 60
+            ],
+            
+        ];
+        return response()->json($data);
     }
 
     public function getUserInfo(Request $request){
         return response()->json(auth()->user());
     }
+
 }
