@@ -11,12 +11,10 @@ class User extends Authenticatable implements JWTSubject
 
     use Notifiable;
 
-    protected $table = 'users';
-    protected $primaryKey = 'id';
-    public $incrementing = true;
-    protected $keyType = 'integer';
     public $timestamps = true;
-    protected $fillable = ['email','password','public_key','created_at','updated_at'];
+    protected $fillable = [
+        'email',
+        'password','public_key','created_at','updated_at'];
     protected $hidden = [ 'password', 'remember_token',];
 
     public function getJWTIdentifier()
