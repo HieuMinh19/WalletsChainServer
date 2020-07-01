@@ -14,7 +14,7 @@ class AddPublicKeyToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('public_key')->after('email');
+            $table->string('public_key', 255)->after('email');
         });
     }
 

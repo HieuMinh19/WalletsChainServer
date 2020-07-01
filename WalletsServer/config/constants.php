@@ -1,0 +1,3 @@
+<?php
+if(!defined('TRANSACTION_TO_TYPE')) define('TRANSACTION_TO_TYPE', 1);
+if(!defined('TRANSACTION_RECEIVE_TYPE')) define('TRANSACTION_RECEIVE_TYPE', 0);
