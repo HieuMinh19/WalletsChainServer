@@ -1,0 +1,180 @@
+/* SPLUS STYLE */
+
+.splus-dropdown-item:hover {
+    background-color: #007bff;
+    color: aliceblue;
+}
+
+/* Bootstrap4 for dataTables  */
+
+.table-bordered {
+    width: 100% !important;
+}
+
+.submitForm_processing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    margin-top: -26px;
+    text-align: center;
+    padding: 1em 0;
+}
+
+/*effect-underline*/
+
+a.effect-underline:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    height: 1em;
+    width: 100%;
+    border-bottom: 1px solid #007bff !important;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+}
+
+.btn-tool {
+    color: black;
+}
+
+.effect-underline:hover:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+/* effect-shine */
+
+.effect-shine:hover {
+    -webkit-mask-image: linear-gradient(-75deg, rgba(0, 0, 0, 0.6) 30%, #000 50%, rgba(0, 0, 0, 0.6) 70%);
+    -webkit-mask-size: 200%;
+    -webkit-animation: shine 2s infinite;
+    animation: shine 2s infinite;
+}
+
+@-webkit-keyframes shine {
+    from {
+        -webkit-mask-position: 150%;
+    }
+    to {
+        -webkit-mask-position: -50%;
+    }
+}
+
+/* Hidden Scrollbar in Chrome*/
+
+.sidebar::-webkit-scrollbar {
+    overflow-y: hidden;
+}
+
+/* Form require */
+
+.form-group.required .control-label:after {
+    content: " * ";
+    color: red;
+}
+
+thead {
+    background: #f2f2f2;
+    color: #000000;
+}
+
+/* Modal Styles */
+
+.modal-open {
+    padding-right: 0px !important;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    float: right;
+    text-align: right;
+    visibility: hidden;
+}
+
+#rateTable a {
+    color: #007bff;
+    cursor: pointer;
+}
+
+/* Checkbox Styles */
+
+.custom-control-lg .custom-control-label::before, .custom-control-lg .custom-control-label::after {
+    top: 0.1rem !important;
+    left: -0.1rem !important;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+}
+
+.custom-control-lg .custom-control-label {
+    margin-left: 0.1rem !important;
+    font-size: 1rem !important;
+}
+
+/* Bootstrap Notify Styles */
+
+.alert-minimalist {
+    background-color: rgb(241, 242, 240);
+    border-color: #007bff;
+    border-radius: 3px;
+    color: rgb(149, 149, 149);
+    padding: 10px;
+}
+
+.alert-minimalist>[data-notify="icon"] {
+    height: 50px;
+    margin-right: 12px;
+}
+
+.alert-minimalist>[data-notify="title"] {
+    color: #007bff;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.alert-minimalist>[data-notify="message"] {
+    font-size: 80%;
+    color: #000000;
+}
+
+/*Bootstrap right click show menu*/
+
+ul li a[role="menuitem"] {
+    margin-left: 10px;
+}
+
+ul li[role="presentation"] {
+    margin: 8px;
+}
+
+ul li[role="presentation"]:hover::after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+ul li[role="presentation"]::after {
+    cursor: pointer;
+    content: "";
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    height: 1em;
+    width: 100%;
+    border-bottom: 1px solid #007bff !important;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+}
