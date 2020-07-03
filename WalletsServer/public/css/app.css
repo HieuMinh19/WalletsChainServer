@@ -1,0 +1,64 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+      user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #fff;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Mobile Styles */
+
+@media only screen and (max-width: 400px) {
+  body {
+    background-color: #007bff !important;
+  }
+
+  .bg-primary {
+    background-color: #007bff !important;
+  }
+}
+
+/* Tablet Styles */
+
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  body {
+    background-color: #007bff !important;
+  }
+
+  .bg-primary {
+    background-color: #007bff !important;
+  }
+}
+
+/* Desktop Styles */
+
+@media only screen and (min-width: 961px) {
+  body {
+    background-color: #007bff !important;
+  }
+
+  .bg-primary {
+    background-color: #007bff !important;
+  }
+}
+
