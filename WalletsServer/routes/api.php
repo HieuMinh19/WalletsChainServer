@@ -22,8 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('auth/register', 'UserController@register');
 Route::post('auth/login', 'UserController@login');
 
-Route::group(['middleware' => 'jwt.auth'], function () {
-    Route::get('user-info', 'UserController@getUserInfo');
+Route::group(['middleware' => ['auth:api']], function () {
+    Route::post('user-info', 'UserController@getUserInfo');
+    Route::get('transaction-history', 'UserController@getHistory')->name('transaction_history');
 });
-
-// Route::post('/login', 'Auth\LoginController@login')->name('api.auth.login');

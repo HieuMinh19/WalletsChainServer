@@ -7,17 +7,23 @@ use App\User;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Services\UserServices;
+
 
 class UserController extends Controller
 {
     use Authenticatable;
     private $user;
+    protected $userService;
 
-    public function __construct(User $user){
+    public function __construct(User $user, UserServices $userService)
+    {
         $this->user = $user;
+        $this->userService = $userService;
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         $user = $this->user->create([
           'name' => $request->get('name'),
           'email' => $request->get('email'),
@@ -32,7 +38,8 @@ class UserController extends Controller
         return response()->json($data);
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $credentials = $request->only('email', 'password');
         $token = auth()->attempt($credentials);;
         try {
@@ -50,14 +57,25 @@ class UserController extends Controller
                 'user' => auth()->user(),
                 'token' => $token,
                 'expires_in' => auth()->factory()->getTTL() * 60
-            ],
-            
+            ]
         ];
         return response()->json($data);
     }
 
-    public function getUserInfo(Request $request){
+    public function getUserInfo(Request $request)
+    {
         return response()->json(auth()->user());
+    }
+
+    public function getHistory(Request $request)
+    {
+        $transactions = $this->userService->getHistory(auth()->user(), intval($request->get('type')));
+        foreach ($transactions as $key => $transaction){
+            if($transaction->public_key_to = $transaction->public_key_from){
+                unset($transactions[$key]);
+            }
+        }
+        return response()->json($transactions);
     }
 
 }
