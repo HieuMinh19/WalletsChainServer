@@ -70,7 +70,7 @@
             <div class="card-body register-card-body">
                 <p class="login-box-msg">{{ __('messages.register_a_new_membership')}}</p>
 
-                <form action="{{route('api.account.create')}}" method="post">
+                <form action="{{route('register')}}" method="post">
                     <div class="form-group has-feedback">
                     <span class="fa fa-user form-control-feedback"></span>
 
@@ -106,16 +106,6 @@
                         <!-- /.col -->
                     </div>
                 </form>
-
-                <!-- <div class="social-auth-links text-center">
-                    <p>- OR -</p>
-                    <a href="#" class="btn btn-block btn-primary">
-                        <i class="fa fa-facebook mr-2"></i> Sign up using Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                        <i class="fa fa-google-plus mr-2"></i> Sign up using Google+
-                    </a>
-                </div> -->
 
                 <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
             </div>
