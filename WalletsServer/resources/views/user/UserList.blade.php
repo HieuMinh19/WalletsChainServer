@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'DUCNGUYEN | List Project')
+@section('title', 'DUCNGUYEN | List User')
 @push('page-styles')
 <link rel="stylesheet" href="{{asset('lib/iCheck/all.css')}}">
 <link rel="stylesheet" href="{{asset('lib/datatables/css/dataTables.bootstrap4.min.css')}}">
@@ -12,12 +12,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">{{__('messages.project_list')}}</h1>
+                    <h1 class="m-0 text-dark">{{__('messages.user_list')}}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="">Home</a></li>
-                        <li class="breadcrumb-item active">Project List</li>
+                        <li class="breadcrumb-item active">{{__('messages.user_list')}}</li>
                     </ol>
                 </div>
             </div>
@@ -45,14 +45,12 @@
 
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="projectTable" class="table table-bordered table-hover">
+                                <table id="userTable" class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Stocks</th>
-                                            <th>Customer</th>                                           
-                                            <th>Price</th>
-                                            <th>Description</th>                                         
+                                            <th>Email</th>
+                                            <th>public_key</th>                                           
                                             <th></th>                                           
                                         </tr>
                                     </thead>
@@ -78,7 +76,7 @@
                 <div id="confirmMessage" class="modal-body">
                     Do you want to delete this project ?
                 </div>
-                <input type="hidden" id="projectId" value="">
+                <input type="hidden" id="userId" value="">
                 <div class="modal-footer">
                     <button type="button" id="btnDelete" class="btn  btn-primary btn-outline-danger">
                         Delete
@@ -90,7 +88,6 @@
             </div>
         </div>
     </div>
-
 </div>
 @endsection
 
@@ -104,5 +101,56 @@
 <script src="{{asset('lib/iCheck/icheck.min.js')}}"></script>
 <script src="{{asset('lib/bootstrap-menu/BootstrapMenu.min.js')}}"></script>
 <script src="{{asset('lib/moment/moment.js')}}"></script>
-
+<script>
+    $(document).ready(function(){
+        var table = $("#userTable").DataTable({
+            "processing": true,
+            "serverSide": true,
+            "pageLength": 50,
+            "ajax": {
+                "url": "{{route('user.getall')}}",
+                "type": 'GET',
+            },
+            "columns": [{
+                    //column : 1
+                    "data": "name"
+                },
+                {
+                    //column : 2
+                    "data": "email"
+                },
+                {
+                    //column : 3
+                    "data": "public_key"
+                },
+                {
+                    //column : 11
+                    "data": "id",
+                    "render": function(data, type, row) {
+                        edit_href = "{{url('edituser')}}/" + data;
+                        delete_href = ' onclick = deleteUser(' + data + ') ';
+                        return '<span><a href=' + edit_href + '>Edit</a> ' + '/ <a href=#' + delete_href + '>Delete</a></span>';
+                    }
+                },
+            ],
+            "language": {
+                "processing": processingAnimate
+            },
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "lengthChange": true,
+            "orderCellsTop": true,
+            "fixedHeader": true,
+            "select": true
+        });
+    });
+    function deleteUser(id) {
+        $('#userId').val(id);
+        $('#confirmMessage')
+            .attr('class', 'modal-body')
+            .html('Do you want to delete this user ?');
+        $("#confirmDeleteRate").modal('show');
+    }
+</script>
 @endpush

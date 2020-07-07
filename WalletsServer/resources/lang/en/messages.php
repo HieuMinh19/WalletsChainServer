@@ -133,6 +133,7 @@ return [
         'choose_pw_generatepw' => "Choose enter Password or Generate Password.",
         'just_pw_gpw'  => 'Just enter password or Generate Password',
     ],
+    'user_list' => 'User List',
     // Cost
     'cost_overview' => 'Cost Overview',
     'cost' => [

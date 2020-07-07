@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'DUCNGUYEN | Edit Project')
+@section('title', 'DUCNGUYEN | New User')
 @push('page-styles')
 <link rel="stylesheet" href="{{asset('lib/iCheck/all.css')}}">
 <link rel="stylesheet" href="{{asset('lib/datepicker/datepicker3.css')}}">
@@ -12,12 +12,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">{{__('messages.project_edit')}}</h1>
+                    <h1 class="m-0 text-dark">{{__('messages.user')}}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('project')}}">Home</a></li>
-                        <li class="breadcrumb-item active">{{__('messages.project_edit')}}</li>
+                        <li class="breadcrumb-item active">{{__('messages.project_addnew')}}</li>
                     </ol>
                 </div>
             </div>

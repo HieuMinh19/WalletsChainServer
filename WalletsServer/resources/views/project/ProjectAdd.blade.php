@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'BMS | Project')
+@section('title', 'DUCNGUYEN | New Project')
 @push('page-styles')
 <link rel="stylesheet" href="{{asset('lib/iCheck/all.css')}}">
 <link rel="stylesheet" href="{{asset('lib/datepicker/datepicker3.css')}}">
@@ -32,23 +32,23 @@
               
                         <div class="card-body">
                             <!-- Form -->
-                            <form role="form" id="projectForm" action="{{url('addnewproject')}}" method="POST">
+                            <form role="form" id="projectForm" action="{{route('storeproject')}}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="form-group required">
-                                            <label for="project_code" class="control-label">{{__('messages.project.name')}}</label>
+                                            <label for="name" class="control-label">{{__('messages.project.name')}}</label>
                                             <div class="input-group">
-                                                <input type="text" id="project_code" name="project_code" class="form-control" placeholder="Project Code" maxlength="5" value="{{old('project_code')}}" autocomplete="off">
+                                                <input type="text" id="name" name="name" class="form-control" placeholder="name" maxlength="5" value="{{old('project_code')}}" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-2"></div>
                                     <div class="col-md-5">
                                         <div class="form-group required">
-                                            <label for="project_name" class="control-label">{{__('messages.project.stock')}} </label>
+                                            <label for="stocks" class="control-label">{{__('messages.project.stock')}} </label>
                                             <div>
-                                                <input type="text" id="project_name" name="project_name" class="form-control" placeholder="Project Name" maxlength="255" value="{{old('project_name')}}" autocomplete="off">
+                                                <input type="text" id="stocks" name="stocks" class="form-control" placeholder="Project Name" maxlength="255" value="{{old('project_name')}}" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
@@ -57,17 +57,17 @@
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="form-group required">
-                                            <label for="project_price" class="control-label">{{__('messages.project.price')}}</label>
+                                            <label for="price" class="control-label">{{__('messages.project.price')}}</label>
                                             <div class="input-group">
-                                                <input type="text" id="project_price" name="project_price" class="form-control" placeholder="Project Price" maxlength="5" value="{{old('project_price')}}" autocomplete="off">
+                                                <input type="text" id="price" name="price" class="form-control" placeholder="Project Price" maxlength="5" value="{{old('project_price')}}" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-2"></div>
                                     <div class="col-md-5">
                                         <div class="form-group required">
-                                            <label for="project_description" class="control-label">{{__('messages.project.price')}}</label>
-                                            <textarea class="form-control" id="project_description" name="project_description" class="form-control" placeholder="Project Description" maxlength="5" value="{{old('project_description')}}" autocomplete="off" rows="3" placeholder="Enter ..."></textarea>
+                                            <label for="description" class="control-label">{{__('messages.project.price')}}</label>
+                                            <textarea class="form-control" id="description" name="description" class="form-control" placeholder="Project Description" maxlength="5" value="{{old('project_description')}}" autocomplete="off" rows="3" placeholder="Enter ..."></textarea>
                                         </div>
                                     </div>
                                 </div>     

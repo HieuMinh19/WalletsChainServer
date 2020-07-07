@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers\Cms;
 
-use App\Model\Project;
+use App\Model\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Exception;
-use App\Http\Requests\Cms\Project\StoreProjectRequest;
-use App\Http\Requests\Cms\Project\UpdateProjectRequest;
-
-class ProjectController extends Controller
+use App\Http\Requests\Cms\User\StoreUserRequest;
+use App\Http\Requests\Cms\User\UpdateUserRequest;
+use Illuminate\Support\Facades\DB;
+class UserController extends Controller
 {
     public function index()
     {
         try {
-            return view('project.ProjectList');
+            return view('user.UserList');
         } catch (Exception $ex) {
             return view('errors.500');
         }
@@ -22,26 +22,28 @@ class ProjectController extends Controller
 
     public function getall(Request $request)
     {
-        $limit = $request->get('limit',100);
-        $query = Project::query();
-        $project = $query->paginate($limit);
-        return response()->json($project);
+        $query = DB::table('users')->get();
+        return datatables($query)->make(true);
+        // $limit = $request->get('limit',100);
+        // $query = User::query();
+        // $user = $query->paginate($limit);
+        //return response()->json($user);
     }
 
     public function create()
     {
         try {
-            return view('project.ProjectAdd');
+            return view('user.UserAdd');
         } catch (Exception $ex) {
             return view('errors.500');
         }
     }
 
-    public function store(StoreProjectRequest $request)
+    public function store(StoreUserRequest $request)
     {
         $data = $request->validated();
-        $project = Project::create($data);
-        return response()->json($project);
+        $user = User::create($data);
+        return response()->json($user);
     }
 
     public function show($id)
@@ -52,7 +54,7 @@ class ProjectController extends Controller
     public function edit()
     {
         try {
-            return view('project.ProjectEdit');
+            return view('user.UserEdit');
         } catch (Exception $ex) {
             return view('errors.500');
         }
