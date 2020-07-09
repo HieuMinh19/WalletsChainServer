@@ -69,7 +69,7 @@
 
             <div class="card-body login-card-body">
 
-                <form method="POST" action="">
+                <form method="POST" action="{{ route('action-login') }}">
                     @csrf
                     <!-- Email -->
                     <div class="row">
@@ -77,16 +77,10 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                             </div>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autofocus>
-                            <!-- <span class="fa fa-envelope form-control-feedback"></span> -->
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="duc@gmail.com" required autofocus>
+                            
                         </div>
                     </div>
-
                     <!-- Password -->
                     <div class="row">
                         <div class="input-group mb-3">
@@ -94,12 +88,6 @@
                                 <span class="input-group-text"><i class="fa fa-lock"></i></span>
                             </div>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password">
-                            <!-- <span class="fa fa-lock form-control-feedback"></span> -->
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
                         </div>
                     </div>
                     <!-- /.Password -->

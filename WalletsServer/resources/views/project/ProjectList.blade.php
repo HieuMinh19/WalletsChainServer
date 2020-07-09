@@ -33,7 +33,7 @@
                             <form role="form">
                                 <div class="row">
                                     <div class="col-md-6 col-6">
-                                        <a href="">
+                                        <a href="{{url('newproject')}}">
                                             <Button type="button" class="btn  btn-primary float-right">{{ __('messages.add_new') }}</Button>
                                         </a>
                                     </div>
@@ -50,7 +50,6 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Stocks</th>
-                                            <th>Customer</th>                                           
                                             <th>Price</th>
                                             <th>Description</th>                                         
                                             <th></th>                                           
@@ -104,5 +103,55 @@
 <script src="{{asset('lib/iCheck/icheck.min.js')}}"></script>
 <script src="{{asset('lib/bootstrap-menu/BootstrapMenu.min.js')}}"></script>
 <script src="{{asset('lib/moment/moment.js')}}"></script>
-
+<script>
+    $(document).ready(function(){
+        var table = $("#projectTable").DataTable({
+            "processing": true,
+            "serverSide": true,
+            "pageLength": 50,
+            "ajax": {
+                "url": "{{route('project.getall')}}",
+                "type": 'GET',
+            },
+            "columns": [{
+                    "data": "name"
+                },
+                {
+                    "data": "stocks"
+                },
+                {
+                    "data": "price"
+                },
+                {
+                    "data": "description"
+                },
+                {
+                    "data": "id",
+                    "render": function(data, type, row) {
+                        edit_href = "{{url('editproject')}}/" + data;
+                        delete_href = ' onclick = deleteProject(' + data + ') ';
+                        return '<span><a href=' + edit_href + '>Edit</a> ' + '/ <a href=#' + delete_href + '>Delete</a></span>';
+                    }
+                },
+            ],
+            "language": {
+                "processing": processingAnimate
+            },
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "lengthChange": true,
+            "orderCellsTop": true,
+            "fixedHeader": true,
+            "select": true
+        });
+    });
+    function deleteProject(id) {
+        $('#projectId').val(id);
+        $('#confirmMessage')
+            .attr('class', 'modal-body')
+            .html('Do you want to delete this project ?');
+        $("#confirmDeleteRate").modal('show');
+    }
+</script>
 @endpush

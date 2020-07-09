@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{url('project')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
                         <li class="breadcrumb-item active">{{__('messages.project_edit')}}</li>
                     </ol>
                 </div>
@@ -29,17 +29,17 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card card-primary card-outline">
-              
                         <div class="card-body">
                             <!-- Form -->
-                            <form role="form" id="projectForm" action="{{route('storeproject')}}" method="POST">
+                            <form role="form" id="" action="{{route('project-update')}}" method="POST">
                                 @csrf
+                                <input type="hidden" name="id" class="form-control" value="{{ $project->id }}">
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="form-group required">
                                             <label for="name" class="control-label">{{__('messages.project.name')}}</label>
                                             <div class="input-group">
-                                                <input type="text" id="name" name="name" class="form-control" placeholder="name" maxlength="5" value="{{old('project_code')}}" autocomplete="off">
+                                                <input type="text" id="name" name="name" class="form-control" placeholder="name" value="{{ $project->name }}" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
@@ -48,7 +48,7 @@
                                         <div class="form-group required">
                                             <label for="stocks" class="control-label">{{__('messages.project.stock')}} </label>
                                             <div>
-                                                <input type="text" id="stocks" name="stocks" class="form-control" placeholder="Project Name" maxlength="255" value="{{old('project_name')}}" autocomplete="off">
+                                                <input type="text" id="stocks" name="stocks" class="form-control" placeholder="Project Name" maxlength="255" value="{{ $project->stocks }}" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
@@ -59,15 +59,15 @@
                                         <div class="form-group required">
                                             <label for="price" class="control-label">{{__('messages.project.price')}}</label>
                                             <div class="input-group">
-                                                <input type="text" id="price" name="price" class="form-control" placeholder="Project Price" maxlength="5" value="{{old('project_price')}}" autocomplete="off">
+                                                <input type="text" id="price" name="price" class="form-control" placeholder="Project Price" value="{{ $project->price }}" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-2"></div>
                                     <div class="col-md-5">
                                         <div class="form-group required">
-                                            <label for="description" class="control-label">{{__('messages.project.price')}}</label>
-                                            <textarea class="form-control" id="description" name="description" class="form-control" placeholder="Project Description" maxlength="5" value="{{old('project_description')}}" autocomplete="off" rows="3" placeholder="Enter ..."></textarea>
+                                            <label for="description" class="control-label">{{__('messages.project.description')}}</label>
+                                            <textarea class="form-control" id="description" name="description" placeholder="Project Description" autocomplete="off" rows="3">{{ $project->description }}</textarea>
                                         </div>
                                     </div>
                                 </div>     
@@ -77,13 +77,13 @@
                                     <div class="col-md-5 col-5">
                                         <div class="form-group">
                                             <a href="{{url('listproject')}}">
-                                                <Button type="button" class="btn  btn-primary btn-outline-danger">{{__('messages.cancel')}}</Button>
+                                                <Button type="button" class="btn btn-primary btn-outline-danger">{{__('messages.cancel')}}</Button>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="col-md-2 col-2"></div>
                                     <div class="col-md-5 col-5">
-                                        <Button type="submit" id="createNewProject" class="btn  btn-primary ">{{__('messages.create')}}</Button>
+                                        <Button type="submit" class="btn  btn-primary ">{{__('messages.update')}}</Button>
                                     </div>
                                 </div>
                             </form>
@@ -113,7 +113,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="Cancel" class="btn  btn-primary" data-dismiss="modal">Close</button>
-                    <!-- <button type="button" id="OK" class="btn btn-primary">Save changes</button> -->
+                    <button type="button" id="OK" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>

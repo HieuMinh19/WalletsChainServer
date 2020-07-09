@@ -46,18 +46,18 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function show($id)
-    {
-        
-    }
-
-    public function edit()
+    public function show(Request $request)
     {
         try {
             return view('user.UserEdit');
         } catch (Exception $ex) {
             return view('errors.500');
         }
+    }
+
+    public function edit()
+    {
+        
     }
 
     public function update(Request $request, $id)

@@ -63,7 +63,7 @@
                 Anything you want
             </div>
             <!-- Default to the left -->
-            <strong> &nbsp; Copyright &copy; 2019 <a href="#">SPLUS-SOFTWARE</a>.</strong> All rights reserved.
+            <strong> &nbsp; Copyright &copy; 2019 <a href="#">DUC-NGUYEN</a>.</strong> All rights reserved.
             <br>
         </footer>
     </div>

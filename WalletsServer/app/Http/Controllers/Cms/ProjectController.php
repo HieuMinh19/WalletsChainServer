@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use PHPUnit\Framework\Exception;
 use App\Http\Requests\Cms\Project\StoreProjectRequest;
 use App\Http\Requests\Cms\Project\UpdateProjectRequest;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -22,10 +23,8 @@ class ProjectController extends Controller
 
     public function getall(Request $request)
     {
-        $limit = $request->get('limit',100);
-        $query = Project::query();
-        $project = $query->paginate($limit);
-        return response()->json($project);
+        $query = DB::table('projects')->get();
+        return datatables($query)->make(true);
     }
 
     public function create()
@@ -41,26 +40,35 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
         $project = Project::create($data);
-        return response()->json($project);
+        // return response()->json($project);
+        return redirect()->route('listproject');
     }
 
     public function show($id)
     {
-        
-    }
-
-    public function edit()
-    {
         try {
-            return view('project.ProjectEdit');
+            $project = Project::find($id);
+            //var_dump($project);die();
+            return view('project.ProjectEdit',['project' => $project]);
         } catch (Exception $ex) {
             return view('errors.500');
         }
     }
 
-    public function update(Request $request, $id)
+    public function edit()
     {
         
+    }
+
+    public function update(UpdateProjectRequest $request)
+    {
+        $project = Project::find($request->id);
+        if (!$project) {
+            return 'Không tìm thấy';
+        }
+        $data = $request->validated();
+        $project->update($data);
+        return redirect()->route('listproject');
     }
 
     public function destroy($id)

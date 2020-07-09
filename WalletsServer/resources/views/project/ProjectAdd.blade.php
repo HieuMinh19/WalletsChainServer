@@ -32,14 +32,14 @@
               
                         <div class="card-body">
                             <!-- Form -->
-                            <form role="form" id="projectForm" action="{{route('storeproject')}}" method="POST">
+                            <form role="form" id="" action="{{route('project-store')}}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="form-group required">
                                             <label for="name" class="control-label">{{__('messages.project.name')}}</label>
                                             <div class="input-group">
-                                                <input type="text" id="name" name="name" class="form-control" placeholder="name" maxlength="5" value="{{old('project_code')}}" autocomplete="off">
+                                                <input type="text" id="name" name="name" class="form-control" placeholder="Project Name" value="" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
@@ -48,7 +48,7 @@
                                         <div class="form-group required">
                                             <label for="stocks" class="control-label">{{__('messages.project.stock')}} </label>
                                             <div>
-                                                <input type="text" id="stocks" name="stocks" class="form-control" placeholder="Project Name" maxlength="255" value="{{old('project_name')}}" autocomplete="off">
+                                                <input type="text" id="stocks" name="stocks" class="form-control" placeholder="Project Name" maxlength="255" value="" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
@@ -59,15 +59,15 @@
                                         <div class="form-group required">
                                             <label for="price" class="control-label">{{__('messages.project.price')}}</label>
                                             <div class="input-group">
-                                                <input type="text" id="price" name="price" class="form-control" placeholder="Project Price" maxlength="5" value="{{old('project_price')}}" autocomplete="off">
+                                                <input type="text" id="price" name="price" class="form-control" placeholder="Project Price" value="" autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-2"></div>
                                     <div class="col-md-5">
                                         <div class="form-group required">
-                                            <label for="description" class="control-label">{{__('messages.project.price')}}</label>
-                                            <textarea class="form-control" id="description" name="description" class="form-control" placeholder="Project Description" maxlength="5" value="{{old('project_description')}}" autocomplete="off" rows="3" placeholder="Enter ..."></textarea>
+                                            <label for="description" class="control-label">{{__('messages.project.description')}}</label>
+                                            <textarea class="form-control" id="description" name="description" placeholder="Project Description" value="" autocomplete="off" rows="3" placeholder="Enter ..."></textarea>
                                         </div>
                                     </div>
                                 </div>     
