@@ -12,9 +12,16 @@ return [
     |   Display : Welcome to our application
     |
     */
+    'i_forgot_my_password' => 'I forgot my password',
+    'remember_me' => 'Remember me',
+    'register_a_new_membership' => 'Register a new membership',
+    'register' => 'Register',
+    'sign_in' => 'Sign In',
+    'sign_in_to_start_your_session' => 'Sign in to start your session',
     'cancel' => 'Cancel',
     'create' => 'Create',
     'update' => 'Update',
+    'register' => 'Register',
     'add_new' => 'Add New',
     // Project
     'project'   => 'Project',

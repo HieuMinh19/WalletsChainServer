@@ -113,7 +113,7 @@
             },
             "columns": [{
                     //column : 1
-                    "data": "full_name"
+                    "data": "name"
                 },
                 {
                     //column : 2

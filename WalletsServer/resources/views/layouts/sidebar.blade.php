@@ -20,8 +20,8 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" 
                 data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item">
-                    <a href="" class="nav-link effect-underline">
+                <li class="nav-item has-treeview {{Request::is('*home*') ? 'menu-open' : '' }}">
+                    <a href="{{route('home')}}" class="nav-link effect-underline">
                         <i class="nav-icon fa fa-dashboard"></i>
                         <p>
                             Dashboard
