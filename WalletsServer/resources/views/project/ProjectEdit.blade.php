@@ -39,7 +39,12 @@
                                         <div class="form-group required">
                                             <label for="name" class="control-label">{{__('messages.project.name')}}</label>
                                             <div class="input-group">
-                                                <input type="text" id="name" name="name" class="form-control" placeholder="name" value="{{ $project->name }}" autocomplete="off">
+                                                <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Project Name" value="{{ $project->name }}" autocomplete="off">
+                                                @if ($errors->has('name'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -48,7 +53,12 @@
                                         <div class="form-group required">
                                             <label for="stocks" class="control-label">{{__('messages.project.stock')}} </label>
                                             <div>
-                                                <input type="text" id="stocks" name="stocks" class="form-control" placeholder="Project Name" maxlength="255" value="{{ $project->stocks }}" autocomplete="off">
+                                                <input type="text" id="stocks" name="stocks" class="form-control @error('stocks') is-invalid @enderror" placeholder="Project Name" maxlength="255" value="{{ $project->stocks }}" autocomplete="off">
+                                                @if ($errors->has('stocks'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('stocks') }}</strong>
+                                                </span>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -59,7 +69,12 @@
                                         <div class="form-group required">
                                             <label for="price" class="control-label">{{__('messages.project.price')}}</label>
                                             <div class="input-group">
-                                                <input type="text" id="price" name="price" class="form-control" placeholder="Project Price" value="{{ $project->price }}" autocomplete="off">
+                                                <input type="text" id="price" name="price" class="form-control @error('price') is-invalid @enderror" placeholder="Project Price" value="{{ $project->price }}" autocomplete="off">
+                                                @if ($errors->has('price'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('price') }}</strong>
+                                                </span>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -67,7 +82,12 @@
                                     <div class="col-md-5">
                                         <div class="form-group required">
                                             <label for="description" class="control-label">{{__('messages.project.description')}}</label>
-                                            <textarea class="form-control" id="description" name="description" placeholder="Project Description" autocomplete="off" rows="3">{{ $project->description }}</textarea>
+                                            <textarea class="form-control @error('price') is-invalid @enderror" id="description" name="description" placeholder="Project Description" autocomplete="off" rows="3">{{ $project->description }}</textarea>
+                                            @if ($errors->has('description'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('description') }}</strong>
+                                            </span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>     
