@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,7 +71,7 @@
 
             <div class="card-body login-card-body">
 
-                <form method="POST" action="{{ route('action-login') }}">
+                <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <!-- Email -->
                     <div class="row">
@@ -77,8 +79,12 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                             </div>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="duc@gmail.com" required autofocus>
-                            
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="duc123@gmail.com" required autofocus>
+                            @if ($errors->has('email'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                        @endif
                         </div>
                     </div>
                     <!-- Password -->
@@ -88,6 +94,11 @@
                                 <span class="input-group-text"><i class="fa fa-lock"></i></span>
                             </div>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password">
+                            @if ($errors->has('password'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                        @endif
                         </div>
                     </div>
                     <!-- /.Password -->

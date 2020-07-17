@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,11 +72,11 @@
             <div class="card-body register-card-body">
                 <p class="login-box-msg">{{ __('messages.register_a_new_membership')}}</p>
 
-                <form action="{{route('action-register')}}" method="POST">
+                <form action="{{route('register')}}" method="POST">
                 @csrf
                     <div class="form-group has-feedback">
                     <span class="fa fa-user form-control-feedback"></span>
-                        <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Full name">
+                        <input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{old('name')}}" name="name" placeholder="Full name">
                         @if ($errors->has('name'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -83,7 +85,7 @@
                     </div>
                     <div class="form-group has-feedback">
                     <span class="fa fa-envelope form-control-feedback"></span>
-                        <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="Email">
+                        <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{old('email')}}" placeholder="Email">
                         @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>

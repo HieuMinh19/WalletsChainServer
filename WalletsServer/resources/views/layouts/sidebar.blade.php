@@ -4,16 +4,16 @@
         <img src="{{URL::asset('img/avery-logo.png')}}" alt="AVERY Logo" class="brand-image img-circle elevation-3" style="opacity: 1">
         <span class="brand-text font-weight-light effect-shine"><b>Investment B-Chain</b></span>
     </a>
-    <!-- @guest --> 
-      <!-- @else -->
-       <!-- @endguest -->
+    @guest 
+    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+    @else
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <img src="{{URL::asset('img/avatar8.png')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">sfsdfds</a>
+                <a href="#" class="d-block">{{ Auth::user()->name }}</a>
             </div>
         </div>
        
@@ -110,5 +110,5 @@
         </nav>
 
     </div>
-  
+    @endguest
 </aside>
