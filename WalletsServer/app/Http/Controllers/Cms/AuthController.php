@@ -17,15 +17,17 @@ class AuthController extends Controller
         //$this->middleware('auth:api', ['except' => ['login']]);
     }
 
-    public function index(){
+    public function register(){
         return view('auth.register');
     }
 
     public function login(){
-        return view('auth.login');    }
+        return view('auth.login');    
+    }
 
-    public function register(Request $request)
+    public function action_register(Request $request)
     {
+        // dd(456);
 
         $validated = $request->validate([
             'password' => 'required|confirmed',
@@ -33,27 +35,18 @@ class AuthController extends Controller
             'email' =>'required|string|email|unique:users'
         ]);
         $validated['password'] = Hash::make($validated['password']);
-        $credentials = $request->only('email', 'password');
         $user = User::create($validated);
-        Auth::guard('web')->attempt($credentials);
-
-        return view('home.Home');
+        return redirect()->route('login');
     }
 
-    public function actionlogin(Request $request)
+    public function action_login(Request $request)
     {
-        $loginData = $request->validate([
-            'password' => 'required',
-            'email' =>'required'
-        ]);
-        if ($token = Auth::attempt($loginData)) {
-            //return $this->respondWithToken($token);
-            return redirect()->route('listproject')->with( ['email' =>  $this->respondWithToken($token)] );
+        $credentials = $request->only('email', 'password');
+        if ($token = Auth::attempt($credentials)) {
+            return redirect()->route('home')->with( ['email' =>  $this->respondWithToken($token)] );
         }
         $email= 'khong hop le';
-        return redirect()->route('login')->with('message', 'Login Failed');;
-        // return redirect('auth.login', compact('email'));
-
+        return redirect()->route('login')->with('message', 'Login Failed');
     }
 
     public function me()
@@ -64,7 +57,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return response()->json(['message' => 'Successfully logged out']);
+        return redirect()->route('login');
     }
 
     public function refresh()

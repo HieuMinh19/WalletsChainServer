@@ -71,7 +71,7 @@
 
             <div class="card-body login-card-body">
 
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('action-login') }}">
                     @csrf
                     <!-- Email -->
                     <div class="row">
@@ -79,7 +79,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                             </div>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="duc123@gmail.com" required autofocus>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="" required autofocus>
                             @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>

@@ -16,13 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes();
+// Auth::routes();
 
 // home
-Route::get('/home', 'Cms\HomeController@index')->name('home');
 
 // auth
+Route::get('/register', 'Cms\AuthController@register')->name('register');
+Route::get('/login', 'Cms\AuthController@login')->name('login');
+Route::post('/register', 'Cms\AuthController@action_register')->name('action-register');
+Route::post('/login', 'Cms\AuthController@action_login')->name('action-login');
+Route::post('/logout', 'Cms\AuthController@logout')->name('logout');
 
+Route::group(['middleware' => 'auth'], function () {    
+    Route::get('/home', 'Cms\HomeController@index')->name('home');
+
+    Route::get('listproject', 'Cms\ProjectController@index')->name('listproject');
     Route::get('projectgetall', 'Cms\ProjectController@getall')->name('project.getall');;
     Route::get('newproject', 'Cms\ProjectController@create')->name('newproject');
     Route::post('storeproject', 'Cms\ProjectController@store')->name('project-store');
@@ -35,12 +43,6 @@ Route::get('/home', 'Cms\HomeController@index')->name('home');
     Route::post('storeuser', 'Cms\UserController@store')->name('storeuser');
     Route::get('edituser', 'Cms\UserController@show')->name('edituser');
     Route::post('updateuser', 'Cms\UserController@update')->name('updateuser');
-
-    Route::post('/register', 'Cms\AuthController@register')->name('register');
-    Route::post('/logout', 'Cms\AuthController@logout')->name('logout');
-    Route::group(['middleware' => 'auth'], function () {
-        Route::get('listproject', 'Cms\ProjectController@index')->name('listproject');
-    });
+});
 
 // });
-

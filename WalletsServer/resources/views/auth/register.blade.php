@@ -72,7 +72,7 @@
             <div class="card-body register-card-body">
                 <p class="login-box-msg">{{ __('messages.register_a_new_membership')}}</p>
 
-                <form action="{{route('register')}}" method="POST">
+                <form action="{{route('action-register')}}" method="POST">
                 @csrf
                     <div class="form-group has-feedback">
                     <span class="fa fa-user form-control-feedback"></span>

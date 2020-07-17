@@ -24,12 +24,13 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
-        $user = $this->user->create([
-          'name' => $request->get('name'),
-          'email' => $request->get('email'),
-          'password' => Hash::make($request->get('password'))
+        $validated = $request->validate([
+            'password' => 'required|confirmed',
+            'name' => 'required|min:3|max:55',
+            'email' =>'required|string|email|unique:users'
         ]);
-
+        $validated['password'] = Hash::make($validated['password']);
+        $user = User::create($validated);       
         $data = [
             'code'=> 200,
             'message'=> 'User created successfully',
