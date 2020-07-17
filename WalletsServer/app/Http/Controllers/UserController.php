@@ -70,8 +70,8 @@ class UserController extends Controller
     public function getHistory(Request $request)
     {
         $transactions = $this->userService->getHistory(auth()->user(), intval($request->get('type')));
-        foreach ($transactions as $key => $transaction){
-            if($transaction->public_key_to = $transaction->public_key_from){
+        foreach ($transactions as $key => $transaction){    
+            if($transaction->public_key_to == $transaction->public_key_from){
                 unset($transactions[$key]);
             }
         }

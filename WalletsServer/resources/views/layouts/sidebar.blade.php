@@ -1,10 +1,10 @@
 <aside class="main-sidebar elevation-4 sidebar-light-primary">
-  
+
     <a href="" class="brand-link bg-primary ">
         <img src="{{URL::asset('img/avery-logo.png')}}" alt="AVERY Logo" class="brand-image img-circle elevation-3" style="opacity: 1">
         <span class="brand-text font-weight-light effect-shine"><b>Investment B-Chain</b></span>
     </a>
-    @guest 
+    @guest
     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
     @else
     <div class="sidebar">
@@ -16,9 +16,9 @@
                 <a href="#" class="d-block">{{ Auth::user()->name }}</a>
             </div>
         </div>
-       
+
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" 
+            <ul class="nav nav-pills nav-sidebar flex-column"
                 data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item has-treeview {{Request::is('*home*') ? 'menu-open' : '' }}">
                     <a href="{{route('home')}}" class="nav-link effect-underline">
@@ -50,7 +50,7 @@
                                 <p>Create Project</p>
                             </a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a href="{{url('editproject')}}" class="nav-link {{Request::is('editproject*') ? 'active' : '' }} effect-underline">
                                 <i class="fa fa-circle-o nav-icon"></i>
@@ -81,7 +81,7 @@
                                 <p>Create User</p>
                             </a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a href="{{url('edituser')}}" class="nav-link {{Request::is('edituser*') ? 'active' : '' }} effect-underline">
                                 <i class="fa fa-circle-o nav-icon"></i>
@@ -90,16 +90,12 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 <li class="nav-item has-treeview">
-                    <a class="nav-link effect-underline" href="" onclick="">
-                        <i class="nav-icon fa fa-sign-out"></i>
-                        <p>
-                            {{ __('Logout') }}
-                        </p>
-                    </a>
-                    <form id="logout-form" action="" method="POST" style="display: none;">
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="">
                         @csrf
+                        <input type="submit">
                     </form>
                 </li>
                 <li class="header">&nbsp;</li>

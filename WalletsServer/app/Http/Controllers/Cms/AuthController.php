@@ -20,25 +20,24 @@ class AuthController extends Controller
     public function index(){
         return view('auth.register');
     }
-    
+
     public function login(){
         return view('auth.login');    }
 
     public function register(Request $request)
     {
+
         $validated = $request->validate([
             'password' => 'required|confirmed',
             'name' => 'required|min:3|max:55',
             'email' =>'required|string|email|unique:users'
         ]);
         $validated['password'] = Hash::make($validated['password']);
-        $user = User::create($validated);       
-        $data = [
-            'code'=> 200,
-            'message'=> 'User created successfully',
-            'data'=>$user
-        ];
-        return response()->json($data);
+        $credentials = $request->only('email', 'password');
+        $user = User::create($validated);
+        Auth::guard('web')->attempt($credentials);
+
+        return view('home.Home');
     }
 
     public function actionlogin(Request $request)
@@ -62,7 +61,7 @@ class AuthController extends Controller
         return response()->json(Auth::user());
     }
 
-    public function logout()    
+    public function logout()
     {
         Auth::logout();
         return response()->json(['message' => 'Successfully logged out']);

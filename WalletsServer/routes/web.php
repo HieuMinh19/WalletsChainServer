@@ -18,36 +18,29 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/login', 'Auth\LoginController@index')->name('login');
-// Route::get('/register', 'Auth\RegisterController@index')->name('register');
-
 // home
 Route::get('/home', 'Cms\HomeController@index')->name('home');
 
 // auth
-// Route::get('/register', 'Cms\AuthController@index')->name('register');
-// Route::get('/login', 'Cms\AuthController@login')->name('login');
-// Route::post('/action-register', 'Cms\AuthController@register')->name('action-register');
-// Route::post('/action-login', 'Cms\AuthController@actionlogin')->name('action-login');
-// Route::post('/logout', 'Cms\AuthController@logout')->name('action-logout');
-// Route::get('/me', 'Cms\AuthController@me')->name('me');
-// Route::get('/refresh', 'Cms\AuthController@refresh')->name('refresh');
-// Route::group(['middleware' => ['auth']], function () {
-    // Route::get('/home', 'Cms\HomeController@index')->name('home');
 
-    Route::get('listproject', 'Cms\ProjectController@index')->name('listproject');
     Route::get('projectgetall', 'Cms\ProjectController@getall')->name('project.getall');;
     Route::get('newproject', 'Cms\ProjectController@create')->name('newproject');
     Route::post('storeproject', 'Cms\ProjectController@store')->name('project-store');
     Route::get('editproject/{id}', 'Cms\ProjectController@show')->name('editproject');
     Route::post('updateproject', 'Cms\ProjectController@update')->name('project-update');
-    
+
     Route::get('listuser', 'Cms\UserController@index')->name('listuser');
     Route::get('getall', 'Cms\UserController@getall')->name('user.getall');
     Route::get('newuser', 'Cms\UserController@create')->name('newuser');
     Route::post('storeuser', 'Cms\UserController@store')->name('storeuser');
     Route::get('edituser', 'Cms\UserController@show')->name('edituser');
     Route::post('updateuser', 'Cms\UserController@update')->name('updateuser');
+
+    Route::post('/register', 'Cms\AuthController@register')->name('register');
+    Route::post('/logout', 'Cms\AuthController@logout')->name('logout');
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('listproject', 'Cms\ProjectController@index')->name('listproject');
+    });
+
 // });
 
