@@ -51,12 +51,12 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="{{url('editproject')}}" class="nav-link {{Request::is('editproject*') ? 'active' : '' }} effect-underline">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Edit Project</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
 
@@ -75,19 +75,18 @@
                                 <p>List User</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="{{route('newuser')}}" class="nav-link {{Request::is('newuser') ? 'active' : '' }} effect-underline">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Create User</p>
                             </a>
-                        </li>
-
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a href="{{url('edituser')}}" class="nav-link {{Request::is('edituser*') ? 'active' : '' }} effect-underline">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Edit User</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
 

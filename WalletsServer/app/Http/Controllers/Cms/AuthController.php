@@ -14,7 +14,8 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth:api', ['except' => ['login']]);
+        // $this->middleware('auth:api', ['except' => ['login']]);
+        // $this->middleware('auth:web');
     }
 
     public function register(){
@@ -42,7 +43,7 @@ class AuthController extends Controller
     public function action_login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        if ($token = Auth::attempt($credentials)) {
+        if ($token = Auth::guard('web')->attempt($credentials)) {
             return redirect()->route('home')->with( ['email' =>  $this->respondWithToken($token)] );
         }
         $email= 'khong hop le';
@@ -56,7 +57,7 @@ class AuthController extends Controller
 
     public function logout()
     {
-        Auth::logout();
+        Auth::guard('web')->logout();
         return redirect()->route('login');
     }
 

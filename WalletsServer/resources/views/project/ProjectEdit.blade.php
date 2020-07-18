@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'DUCNGUYEN | Edit Project')
+@section('title', 'BLOCK-CHAIN | Edit Project')
 @push('page-styles')
 <link rel="stylesheet" href="{{asset('lib/iCheck/all.css')}}">
 <link rel="stylesheet" href="{{asset('lib/datepicker/datepicker3.css')}}">

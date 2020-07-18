@@ -24,10 +24,6 @@ class UserController extends Controller
     {
         $query = DB::table('users')->get();
         return datatables($query)->make(true);
-        // $limit = $request->get('limit',100);
-        // $query = User::query();
-        // $user = $query->paginate($limit);
-        //return response()->json($user);
     }
 
     public function create()

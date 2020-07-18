@@ -14,8 +14,10 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api',
         'passwords' => 'users',
+        // 'guard' => 'api',
+
     ],
 
     /*
@@ -71,10 +73,10 @@ return [
             'model' => App\Model\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'users_app' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
     ],
 
     /*

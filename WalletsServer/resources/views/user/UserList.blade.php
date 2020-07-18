@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'DUCNGUYEN | List User')
+@section('title', 'BLOCK-CHAIN | List User')
 @push('page-styles')
 <link rel="stylesheet" href="{{asset('lib/iCheck/all.css')}}">
 <link rel="stylesheet" href="{{asset('lib/datatables/css/dataTables.bootstrap4.min.css')}}">
@@ -128,8 +128,8 @@
                     "data": "id",
                     "render": function(data, type, row) {
                         edit_href = "{{url('edituser')}}/" + data;
-                        delete_href = ' onclick = deleteUser(' + data + ') ';
-                        return '<span><a href=' + edit_href + '>Edit</a> ' + '/ <a href=#' + delete_href + '>Delete</a></span>';
+                        // delete_href = ' onclick = deleteUser(' + data + ') ';
+                        return '<span><a href=' + edit_href + '><button type="button" class="btn btn-block btn-primary btn-sm">Edit</button></a></span>';
                     }
                 },
             ],

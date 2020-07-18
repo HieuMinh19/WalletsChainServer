@@ -20,6 +20,9 @@ class UserController extends Controller
     {
         $this->user = $user;
         $this->userService = $userService;
+        // $this->guard = "api";
+        // $this->middleware('auth:api');
+
     }
 
     public function register(Request $request)
@@ -42,7 +45,7 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        $token = auth()->attempt($credentials);;
+        $token = auth()->attempt($credentials);
         try {
            if (!$token) {
             return response()->json(['invalid_email_or_password'], 422);
@@ -50,7 +53,6 @@ class UserController extends Controller
         } catch (\Exception $e) {
             return response()->json(['failed_to_create_token'], 500);
         }
-        // return response()->json(compact('token'));
         $data = [
             'code' => 200,
             'message' => "OK",

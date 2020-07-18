@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'DUCNGUYEN | List Project')
+@section('title', 'BLOCK-CHAIN | HOME')
 @push('page-styles')
 <link rel="stylesheet" href="{{asset('lib/iCheck/all.css')}}">
 <link rel="stylesheet" href="{{asset('lib/datatables/css/dataTables.bootstrap4.min.css')}}">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'DUCNGUYEN | New Project')
+@section('title', 'BLOCK-CHAIN | New Project')
 @push('page-styles')
 <link rel="stylesheet" href="{{asset('lib/iCheck/all.css')}}">
 <link rel="stylesheet" href="{{asset('lib/datepicker/datepicker3.css')}}">
@@ -82,7 +82,7 @@
                                     <div class="col-md-5">
                                         <div class="form-group required">
                                             <label for="description" class="control-label">{{__('messages.project.description')}}</label>
-                                            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" placeholder="Project Description" value="" autocomplete="off" rows="3" placeholder="Enter ..."></textarea>
+                                            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" placeholder="Project Description" value="" autocomplete="off" rows="3" placeholder="Enter ...">{{old('description')}}</textarea>
                                             @if ($errors->has('description'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('description') }}</strong>
