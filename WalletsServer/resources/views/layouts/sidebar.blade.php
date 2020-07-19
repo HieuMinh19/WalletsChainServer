@@ -18,8 +18,7 @@
         </div>
 
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column"
-                data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item has-treeview {{Request::is('*home*') ? 'menu-open' : '' }}">
                     <a href="{{route('home')}}" class="nav-link effect-underline">
                         <i class="nav-icon fa fa-dashboard"></i>
@@ -91,10 +90,18 @@
                 </li>
 
                 <li class="nav-item has-treeview">
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="">
+                    <!-- /// -->
+                    <form id="logout_form" action="{{ route('logout') }}" method="POST" style="">
                         @csrf
-                        <input type="submit">
+                        <!-- /// -->
+                        <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="">
+                        @csrf -->
+                        <a class="nav-link effect-underline" href="javascript:$('#logout_form').submit();" onclick="">
+                            <i class="nav-icon fa fa-sign-out"></i>
+                            <p>
+                                {{ __('Logout') }}
+                            </p>
+                        </a>
                     </form>
                 </li>
                 <li class="header">&nbsp;</li>

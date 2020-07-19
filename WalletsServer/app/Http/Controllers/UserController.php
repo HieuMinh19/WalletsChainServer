@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Services\UserServices;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
@@ -30,7 +31,8 @@ class UserController extends Controller
         $validated = $request->validate([
             'password' => 'required|confirmed',
             'name' => 'required|min:3|max:55',
-            'email' =>'required|string|email|unique:users'
+            'email' =>'required|string|email|unique:users',
+            // 'phone' => 'string',
         ]);
         $validated['password'] = Hash::make($validated['password']);
         $user = User::create($validated);       
@@ -42,10 +44,51 @@ class UserController extends Controller
         return response()->json($data);
     }
 
+    public function UserUpdate(Request $request)
+    {
+         
+        $user = User::find($request->id);
+        if (!$user) {
+            // dd($request->id);
+            $data = [
+                'code'=> 500,
+                'message'=> 'User Update Fail',
+            ];
+            return response()->json($data);
+        }
+
+        $validated = $request->validate([
+            'password' => 'string',
+            'name' => 'string',
+            'email' =>'string|email|unique:users',
+            // 'phone' => 'string|unique:users',
+        ]);
+        // dd($validated);
+
+        $validated['password'] = Hash::make($validated['password']);
+        // $user_input = $request->validated();
+        $user->update($validated);
+        $data = [
+            'code'=> 200,
+            'message'=> 'User Update successfully',
+            'data'=>$user
+        ];
+        return response()->json($data);
+
+        // $job = Job::find($request->id);
+        // if (!$job) {
+        //     return $this->responseError('Không tìm thấy');
+        // }
+        // $data = $request->validated();
+        // $job->update($data);
+        // return $this->responseSuccess($job, 'Cập nhập thành công');
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        $token = auth()->attempt($credentials);
+        // $token = auth()->attempt($credentials);
+        $token = Auth::guard('api')->attempt($credentials);
         try {
            if (!$token) {
             return response()->json(['invalid_email_or_password'], 422);
@@ -67,6 +110,7 @@ class UserController extends Controller
 
     public function getUserInfo(Request $request)
     {
+         //dd(auth()->user());
         return response()->json(auth()->user());
     }
 

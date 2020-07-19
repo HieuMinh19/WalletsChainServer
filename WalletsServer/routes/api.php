@@ -21,8 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('auth/register', 'UserController@register');
 Route::post('auth/login', 'UserController@login');
+Route::post('auth/UserUpdate', 'UserController@UserUpdate');
+
+// Route::get('auth/user-info', 'UserController@getUserInfo');
 
 Route::group(['middleware' => ['auth:api']], function () {
-    Route::post('user-info', 'UserController@getUserInfo');
+    Route::get('auth/user-info', 'UserController@getUserInfo');
 });
 Route::get('transaction-history', 'UserController@getHistory')->name('transaction_history');
