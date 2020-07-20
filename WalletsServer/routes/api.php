@@ -29,3 +29,4 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('auth/user-info', 'UserController@getUserInfo');
 });
 Route::get('transaction-history', 'UserController@getHistory')->name('transaction_history');
+Route::get('auth/projectdetail','ProjectController@getDetail')->name('projectdetail');
