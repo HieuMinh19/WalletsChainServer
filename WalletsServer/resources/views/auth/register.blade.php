@@ -65,7 +65,8 @@
     <!-- Login -->
     <div class="register-box">
         <div class="register-logo">
-            <a href="#"><b>DUC NGUYEN</b></a>
+            <!-- <a href="#"><b>BLO-CKR</b></a> -->
+            <a href="#"><b class="text-primary font-weight-bold">BLO-CKR</b></a>
         </div>
 
         <div class="card">

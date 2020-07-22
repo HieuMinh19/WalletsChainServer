@@ -56,23 +56,43 @@ class UserController extends Controller
             ];
             return response()->json($data);
         }
+     //   dd($request);
 
         $validated = $request->validate([
-            'password' => 'string',
             'name' => 'string',
-            'email' =>'string|email|unique:users',
+            'email' =>'string|email',
             // 'phone' => 'string|unique:users',
         ]);
-        // dd($validated);
-
-        $validated['password'] = Hash::make($validated['password']);
+      
         // $user_input = $request->validated();
-        $user->update($validated);
-        $data = [
-            'code'=> 200,
-            'message'=> 'User Update successfully',
-            'data'=>$user
-        ];
+        if($request->get('password') != ""){
+            $validated['password'] = Hash::make($request->get('password'));
+        }else{
+            unset($validated['password']);
+        }
+     // dd($validated);
+
+        // if($validated['password'] != ""){
+        //     $validated['password'] = Hash::make($validated['password']);
+        // if($validated['email'] != ""){
+        //     unset($validated['email']);
+        // }
+        try{
+            $user->update($validated);
+            $data = [
+                'code'=> 200,
+                'message'=> 'User Update successfully',
+                'data'=>$user
+            ];
+        }catch(\Exception $e){
+            $data = [
+                'code'=> 412,
+                'message'=> $e->getMessage(),
+                'data'=>$user
+            ];
+        } 
+        
+       
         return response()->json($data);
 
         // $job = Job::find($request->id);

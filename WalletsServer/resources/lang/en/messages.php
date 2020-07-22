@@ -12,6 +12,8 @@ return [
     |   Display : Welcome to our application
     |
     */
+    'signup' => 'Signup',
+
     'i_forgot_my_password' => 'I forgot my password',
     'remember_me' => 'Remember me',
     'register_a_new_membership' => 'Register a new membership',

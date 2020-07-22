@@ -59,7 +59,7 @@
     <div class="login-box">
 
         <div class="login-logo ">
-            <a href="#"><b class="text-primary font-weight-bold">DUC -NGUYEN</b></a>
+            <a href="#"><b class="text-primary font-weight-bold">BLO-CKR</b></a>
         </div>
         <!-- /.login-logo -->
 
@@ -133,7 +133,7 @@
                 <p class="mb-0">
                 </p>
                 <p class="mb-1">
-                    <a href="#">{{ __('messages.i_forgot_my_password') }}</a>
+                    <a href="{{ route('register') }}">{{ __('messages.signup') }}</a>
                 </p>
 
             </div>

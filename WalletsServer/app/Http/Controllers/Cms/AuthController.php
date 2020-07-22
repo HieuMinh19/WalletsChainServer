@@ -46,7 +46,7 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if ($token = Auth::guard('web')->attempt($credentials)) {
-            return redirect()->route('home')->with( ['email' =>  $this->respondWithToken($token)] );
+            return redirect()->route('listproject')->with( ['email' =>  $this->respondWithToken($token)] );
         }
         $email= 'khong hop le';
         return redirect()->route('login')->with('message', 'Login Failed');
